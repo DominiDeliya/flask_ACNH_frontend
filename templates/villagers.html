@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Villagers</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/villagers.css') }}">
 </head>
 <body>
-<table style="width:80%">
-  <tr>
-    <th>Name</th>
-    <th>Species</th>
-    <th>Personality</th>
-  </tr>
-    {% for villager in villagers_list %}
-      <tr>
-        <td>{{ villager.name }}</td>
-        <td>{{ villager.species }}</td>
-        <td>{{ villager.personality }}</td>
-      </tr>
-    {% endfor %}
+
+<form action="/todo.php">
+  <input type="text" id="search_text" name=""><br><br>
+  <input type="submit" value="Search">
+</form>
+
+<table style="width:80%" class="styled-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Personality</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for villager in villagers_list %}
+            <tr>
+                <td>{{ villager.name }}</td>
+                <td>{{ villager.species }}</td>
+                <td>{{ villager.personality }}</td>
+                <td><a href="/villager/{{ villager.id }}" ><button>Details</button></a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
 </table>
 </body>
 </html>
