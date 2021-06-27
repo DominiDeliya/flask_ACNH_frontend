@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Villagers</title>
+</head>
+<body>
+<table style="width:80%">
+  <tr>
+    <th>Name</th>
+    <th>Species</th>
+    <th>Personality</th>
+  </tr>
+    {% for villager in villagers_list %}
+      <tr>
+        <td>{{ villager.name }}</td>
+        <td>{{ villager.species }}</td>
+        <td>{{ villager.personality }}</td>
+      </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
