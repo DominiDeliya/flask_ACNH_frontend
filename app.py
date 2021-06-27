@@ -1,18 +1,30 @@
 import requests as requests
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
 
-@app.route('/villagers/')
-def villagers():
+@app.route('/')
+def home():
+    return redirect(url_for('villagers'))
 
-    url = 'http://localhost:5000/villagers'
+
+@app.route('/villagers', methods=['GET', 'POST'])
+def villagers():
     headers = {'content-type': 'application/json'}
-    r = requests.get(url, headers=headers)
+    search_text = request.form.get('search_text')
+    if request.method == 'POST':
+        url = 'http://localhost:5000/villagers/search'
+        r = requests.get(url, headers=headers, params={'name': search_text})
+    else:
+        url = 'http://localhost:5000/villagers'
+        r = requests.get(url, headers=headers)
+
     if r.status_code == 200:
         villagers_list = r.json()
-        return render_template('villagers.html', villagers_list=villagers_list)
+        if search_text is None:
+            search_text = ''
+        return render_template('villagers.html', villagers_list=villagers_list, search_text=search_text)
 
     return render_template('error.html')
 
