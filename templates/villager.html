@@ -12,6 +12,9 @@
     <tr>
         <th class="styled-table-vertical-th">Name</th>
         <td>{{ villager.name }}</td>
+        <td style="width: 100px" rowspan="6">
+            <img src="{{ villager.image_url }}" alt="{{ villager.name }}">
+        </td>
     </tr>
 
     <tr>
@@ -26,7 +29,7 @@
 
     <tr>
         <th class="styled-table-vertical-th">Catch-Phrase</th>
-        <td>{{ villager.chatchphrase }}</td>
+        <td>{{ villager.catchphrase }}</td>
     </tr>
 
     <tr>
