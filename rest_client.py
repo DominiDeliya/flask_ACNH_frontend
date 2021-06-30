@@ -13,6 +13,7 @@ def get_villagers():
         return villagers_list
 
 
+# Request details of selected villager from the REST service, if not 200 return None
 def get_villager(villager_id):
     url = base_url + '/villager/' + str(villager_id)
     response = requests.get(url, headers=headers)
@@ -21,6 +22,7 @@ def get_villager(villager_id):
         return villager_data
 
 
+# Request search results from the REST service, if not 200 return None
 def search_villagers(search_text):
     url = base_url + '/villagers/search'
     response = requests.get(url, headers=headers, params={'name': search_text})
