@@ -1,5 +1,5 @@
 # flask_ACNH_frontend
-This app is to create front end to search, get list of villagers and get details of villagers in ACNH(animal crossing new horizons) game
+This is a frontend application to search, get list of villagers and get details of villagers in ACNH(animal crossing new horizons) game
 
 In rest_client.py included code and functions to call rest client appication and  all the requests(list of villagers, details of villagers and search)
 
